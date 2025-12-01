@@ -52,8 +52,8 @@ public class JobBase : IJob
             {
                 JobCache.Set<TasksLog>(jobid.ToString(), tasksLog);
                 model.RunTimes += 1;
-                if (model.TriggerType == 0) model.CycleHasRunTimes += 1;
-                if (model.TriggerType == 0 && model.CycleRunTimes != 0 && model.CycleHasRunTimes >= model.CycleRunTimes) model.IsStart = false;// 循环完善,当循环任务完成后,停止该任务,防止下次启动再次执行
+                if (model.TriggerType == Enum.JobTriggerTypeEnum.Simple) model.CycleHasRunTimes += 1;
+                if (model.TriggerType == Enum.JobTriggerTypeEnum.Simple && model.CycleRunTimes != 0 && model.CycleHasRunTimes >= model.CycleRunTimes) model.IsStart = false;// 循环完善,当循环任务完成后,停止该任务,防止下次启动再次执行
                 var separator = "<br>";
                 // 这里注意数据库字段的长度问题，超过限制，会造成数据库remark不更新问题。
 

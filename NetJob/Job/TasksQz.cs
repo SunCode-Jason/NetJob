@@ -1,4 +1,6 @@
-﻿namespace NetJob.Job;
+﻿using NetJob.Enum;
+
+namespace NetJob.Job;
 
 /// <summary>
 /// 任务计划表
@@ -50,7 +52,7 @@ public class TasksQz
     /// <summary>
     /// 触发器类型（0、simple 1、cron）
     /// </summary>
-    public int TriggerType { get; set; }
+    public JobTriggerTypeEnum TriggerType { get; set; }
     /// <summary>
     /// 执行间隔时间, 秒为单位
     /// </summary>

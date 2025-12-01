@@ -19,7 +19,7 @@ var builder = Host.CreateDefaultBuilder(args)
 
 var _schedulerCenter = builder.Services.GetRequiredService<ISchedulerCenter>();
 
-await _schedulerCenter.AddScheduleJobAsync(new TasksQz() { Id = 1, Name = "TestJob", AssemblyName = "NetJob", ClassName = "Job.Jobs.TestJob", BeginTime = DateTime.Now.AddDays(-1), EndTime = DateTime.Now.AddMonths(1), Cron = "0/2 * * * * ?", TriggerType = 1, IsStart = true });
+await _schedulerCenter.AddScheduleJobAsync(new TasksQz() { Id = 1, Name = "TestJob", AssemblyName = "NetJob", ClassName = "Job.Jobs.TestJob", BeginTime = DateTime.Now.AddDays(-1), EndTime = DateTime.Now.AddMonths(1), Cron = "0/2 * * * * ?", TriggerType = NetJob.Enum.JobTriggerTypeEnum.Cron, IsStart = true });
 
 Console.WriteLine("Hello, World!");
 

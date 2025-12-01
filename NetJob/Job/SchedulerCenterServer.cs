@@ -120,7 +120,7 @@ public class SchedulerCenterServer : ISchedulerCenter
                     result.msg = $"该任务计划已经在执行:【{tasksQz.Name}】,请勿重复启动！";
                     return result;
                 }
-                if (tasksQz.TriggerType == 0 && tasksQz.CycleRunTimes != 0 && tasksQz.CycleHasRunTimes >= tasksQz.CycleRunTimes)
+                if (tasksQz.TriggerType == Enum.JobTriggerTypeEnum.Simple && tasksQz.CycleRunTimes != 0 && tasksQz.CycleHasRunTimes >= tasksQz.CycleRunTimes)
                 {
                     result.success = false;
                     result.msg = $"该任务计划已完成:【{tasksQz.Name}】,无需重复启动,如需启动请修改已循环次数再提交";
@@ -164,7 +164,7 @@ public class SchedulerCenterServer : ISchedulerCenter
                 //    .Build();
                 #endregion
 
-                if (tasksQz.Cron != null && CronExpression.IsValidExpression(tasksQz.Cron) && tasksQz.TriggerType > 0)
+                if (tasksQz.Cron != null && CronExpression.IsValidExpression(tasksQz.Cron) && tasksQz.TriggerType == Enum.JobTriggerTypeEnum.Cron)
                 {
                     trigger = CreateCronTrigger(tasksQz);
 
